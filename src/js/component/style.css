@@ -1,0 +1,23 @@
+.li-btn {
+  display: none;
+}
+
+.li-container {
+  transition: 0.5s all ease;
+  height: 70px;
+  border-bottom: 2px rgb(221, 221, 221) solid;
+}
+
+.li-container:hover {
+  background-color: rgb(238, 238, 238);
+  color: rgb(0, 0, 0);
+  border-bottom: red solid 2px;
+}
+
+.li-container:hover .li-btn {
+  display: block;
+}
+
+.shadow-container {
+  transition: all 0.5s ease;
+}
