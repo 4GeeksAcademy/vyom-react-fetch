@@ -1,4 +1,4 @@
-.li-btn {
+.botones {
   display: none;
 }
 
@@ -14,7 +14,7 @@
   border-bottom: red solid 2px;
 }
 
-.li-container:hover .li-btn {
+.li-container:hover .botones {
   display: block;
 }
 

@@ -59,15 +59,32 @@ const Home = () => {
   };
 
   const deleteAll = async (items) => {
-    await items.map((item) => {
+    const deletePromises = items.map((item) =>
       fetch(`https://playground.4geeks.com/todo/todos/${item.id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-      });
-      getUser();
+      })
+    );
+
+    await Promise.all(deletePromises);
+    getUser();
+  };
+
+  const editTask = async (id) => {
+    const newText = prompt("Escribe el nuevo valor de esta tarea");
+    await fetch(`https://playground.4geeks.com/todo/todos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        label: newText,
+        is_done: true,
+      }),
     });
+    getUser();
   };
 
   const handleSubmit = (e) => {
@@ -139,12 +156,21 @@ const Home = () => {
               id={task.id}
             >
               <p className="p-0 m-0 my-auto">{task.label}</p>
-              <button
-                className="li-btn btn text-danger fw-bold fs-4"
-                onClick={() => deleteTask(task.id)}
-              >
-                X
-              </button>
+              <div className="botones">
+                <button
+                  onClick={() => editTask(task.id)}
+                  className="btn text-success fw-bold fs-3"
+                >
+                  <i className="bx bxs-edit-alt text-success "></i>
+                </button>
+
+                <button
+                  className="btn text-danger fw-bold fs-4"
+                  onClick={() => deleteTask(task.id)}
+                >
+                  X
+                </button>
+              </div>
             </li>
           ))}
         </ul>
