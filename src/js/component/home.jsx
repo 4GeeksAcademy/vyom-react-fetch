@@ -116,7 +116,7 @@ const Home = () => {
         className="shadow-container w-75 mx-auto rounded p-5 bg-white position-relative"
         style={{
           boxShadow: `${printShadow(tasks)}`,
-          maxWidth: "1200px",
+          maxWidth: "900px",
         }}
       >
         <form onSubmit={handleSubmit}>
